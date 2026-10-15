@@ -41,7 +41,7 @@ const explore = new Agent({
   systemPrompt:
     "You are a codebase exploration agent with read-only filesystem access. " +
     "Be concise but thorough in your findings.",
-  model: openai("gpt-5.2"),
+  model: openai.chat("glm-5.3"),
   tools: { readFile, listFiles, grep },
   maxSteps: 15,
   instructions: false,
@@ -56,7 +56,7 @@ const agent = new Agent({
     "IMPORTANT: Use the `announce` tool frequently to narrate what you are doing. " +
     "Call it before starting a multi-step task, when switching between subtasks, " +
     "and when you have a notable finding. Keep announcements short (one sentence).",
-  model: openai("gpt-5.2"),
+  model: openai.chat("glm-5.3"),
   tools: { readFile, listFiles, grep, bash, announce },
   maxSteps: 100,
   subagents: [explore],
